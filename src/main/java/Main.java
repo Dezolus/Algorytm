@@ -1,5 +1,3 @@
-package com.javarush;
-
 import java.util.*;
 
 public class Main {
