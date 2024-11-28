@@ -12,6 +12,7 @@ target/
 *.iml
 *.ipr
 *.gif
+*.mp4
 
 ### Eclipse ###
 .apt_generated
