@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Gun">
+    <output-path>$PROJECT_DIR$/out/artifacts/Gun</output-path>
+    <root id="archive" name="Gun.jar" />
+  </artifact>
+</component>
