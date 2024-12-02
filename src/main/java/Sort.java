@@ -1,6 +1,8 @@
+import aston.lesson02.CustomArrayList;
+
 import java.util.*;
 
-public class Main {
+public class Sort {
     public static void main(String[] args) throws Throwable {
 
 
@@ -8,7 +10,18 @@ public class Main {
         String hello2 = hello.intern();
         List<String> list = new LinkedList<>();
 //
-//        int[] array = new int[]{5, 4, 3, 2, 1, 6};
+        int[] array = new int[]{5, 6, 1, 4, 2, 3};
+
+        CustomArrayList<Integer> customArrayList = new CustomArrayList<>();
+        customArrayList.add(4);
+        customArrayList.add(2);
+        customArrayList.add(1);
+        customArrayList.add(6);
+        customArrayList.add(5);
+        customArrayList.add(3);
+
+        customArrayList.sort();
+        System.out.println(customArrayList);
 
 //        System.out.println(bubbleSort(array));
 
@@ -17,7 +30,7 @@ public class Main {
 //        System.out.println(quickSort(array, 0, array.length - 1));
 
 //        System.out.println(heapSort(array));
-        System.out.println(hello2);
+//        System.out.println(hello2);
 
         Map<String, Integer> nonSorterMap = Map.of(
                 "Two", 2,
@@ -106,6 +119,8 @@ public class Main {
         }
     }
 
+    //        int[] array = new int[]{5, 6, 1, 4, 2, 3};
+    //    quickSort(array, 0, array.length - 1)
     public static String quickSort(int[] array, int low, int high) {
         if (low < high) {
             int pivotIndex = partition(array, low, high);
@@ -116,13 +131,13 @@ public class Main {
     }
 
     public static int partition(int[] array, int low, int high) {
-        int pivot = array[high];    // 5
+        int pivot = array[high];    // 3
         int i = (low - 1); // -1
-        for (int j = low; j < high; j++) {      // j=1
-            if (array[j] <= pivot) {         // 5 < 1
+        for (int j = low; j < high; j++) {      // j=0
+            if (array[j] <= pivot) {         // 5 <= 6
                 i++;        // 0
                 int temp = array[i];        // temp = 5
-                array[i] = array[j];        // i=1 j=1
+                array[i] = array[j];        // i=0 j=1
                 array[j] = temp;        // j=1
             }
         }

@@ -1,6 +1,4 @@
 
-T
-$src/main/java/com/javarush/Main.java,c\3\c3fe4ec12d7565086cc6e85c3edaf4d7738f1447
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 G
@@ -240,3 +238,9 @@ Q.idea/sonarlint/securityhotspotstore/f/2/f246b2e94077c1b090d3800175db508bae153d
 Q.idea/sonarlint/securityhotspotstore/e/3/e36d3b35b0aa033dfcf067b2cd16117a306b1e80,d\4\d4152bfbafad9144e93dd24fcb13f41564ff7aaa
 Å
 Q.idea/sonarlint/securityhotspotstore/e/f/ef9105f2834253bdeb8266cbd4c01070bf563187,b\3\b3da459fcff4650f805bb6e80ec7d919045fc829
+a
+1src/main/java/aston/practice/CustomArrayList.java,d\d\dd1ce6c636b02b8756db8ff15b94db64387abd7a
+a
+1src/main/java/aston/lesson02/CustomArrayList.java,4\b\4b9a5fa429ac097dd1a5213ac029254e1031756b
+G
+src/main/java/Sort.java,8\d\8dbc5b15f2fb0c975553a871deb47ee579ba5416
