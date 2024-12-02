@@ -1,23 +1,0 @@
-
-	java:S112J"FDefine and throw a dedicated exception instead of using a generic one.(ÑÀ­“úÿÿÿÿ8à¾“·2J$94254542-f8e9-4205-951f-8b8587de1000
-{
-java:S1854"8Remove this useless assignment to local variable "list".(ÔÊğ÷8Ş¥¾“·2J$befd0412-0f43-4287-a72a-0e546169b55b
-l
-java:S1481")Remove this unused "list" local variable.(ÔÊğ÷8â¥¾“·2J$715154c4-74d9-40bc-a368-f4c149dbf488
-l	java:S106"+Replace this use of System.out by a logger.(Ú¹­w8â¥¾“·2J$e11f16a3-30b5-4738-8f32-73e5a4955a9f
-ƒ	java:S125"<This block of commented-out lines of code should be removed.(á¯§òùÿÿÿÿ8â¥¾“·2J$5a8e9f09-beb3-43fb-a7a6-ff17af7f9952
-~	java:S125"<This block of commented-out lines of code should be removed.(ãÇ×µ8ã¥¾“·2J$ce6884fd-3d16-46b9-8f25-7a98527f8685
-ƒ	java:S125"<This block of commented-out lines of code should be removed.(­÷ı·úÿÿÿÿ8ã¥¾“·2J$36544ee1-b330-4b64-a0cb-af50d42ea628
-ƒ	java:S125"<This block of commented-out lines of code should be removed.(ù”Â”ıÿÿÿÿ8ã¥¾“·2J$98930c04-34ae-4f4f-af4a-b58051d4d0f1
-~	java:S125"<This block of commented-out lines of code should be removed.(õºæÍ8Ü€âó´2J$03c91ad0-32be-4cdc-b096-d32a52a5cc1f
-r	java:S106""+Replace this use of System.out by a logger.(¹¯Ï¸şÿÿÿÿ8å¥¾“·2J$9485915f-6df5-4068-a700-0e2f0ad64246
-{
-java:S1854P"8Remove this useless assignment to local variable "list".(ŠŒÖ8ó¥¾“·2J$6a3634c7-fdbe-404b-af5f-5850a999fe8a
-g
-java:S1659T"Declare "j" on a separate line.(á”æåşÿÿÿÿ8ó¥¾“·2J$ebc4bb78-050e-49dd-94fb-339aaffb2c1d
-l
-java:S1481P")Remove this unused "list" local variable.(ŠŒÖ8ö¥¾“·2J$e73cec25-2801-45fa-846d-a074bf6958fe
-s
-java:S1197‰"*Move the array designators [] to the type.(Åãæûÿÿÿÿ8ü¥¾“·2J$c2eee03d-c723-4f91-aa51-8afcbd4c95a4
-s
-java:S1197"*Move the array designators [] to the type.(¸Ÿùøÿÿÿÿ8€¦¾“·2J$115bfdf0-8623-4bd8-9fcc-d1a00547829a
