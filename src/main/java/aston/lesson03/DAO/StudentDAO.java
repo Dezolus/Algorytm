@@ -1,76 +1,85 @@
 package aston.lesson03.DAO;
 
-import aston.lesson03.DBConnection;
-import aston.lesson03.models.Student;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import aston.lesson03.config.HibernateUtil;
+import aston.lesson03.model.Coursework;
+import aston.lesson03.model.Student;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 
 public class StudentDAO {
 
-    public void addStudent(int id, String firstName, String lastName) {
-        String query = "INSERT INTO student VALUES(?,?,?)";
-        try (Connection connection = DBConnection.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setInt(1, id);
-            ps.setString(2, firstName);
-            ps.setString(3, lastName);
-            ps.executeUpdate();
-        } catch (SQLException e) {
+    public void addStudent(Student student) {
+        Transaction tx = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            tx = session.beginTransaction();
+            session.save(student);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        }
+    }
+
+    // N+1 solved
+    public Set<Student> getAllStudents() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return new HashSet<>(session.createQuery("select s from Student s left join fetch s.courseWorks", Student.class).getResultList());
+        }
+    }
+
+    // N+1
+    public List<Student> getAllStudentsNPlusOne() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            List<Student> students = session.createQuery("from Student", Student.class).getResultList();
+            List<Coursework> courseworks;
+            for (Student student : students) {
+                courseworks = student.getCourseWorks();
+                System.out.println(courseworks);
+            }
+            return students;
         }
     }
 
     public Student getStudent(int id) {
-        String query = "SELECT * FROM student WHERE id = ?";
-        Student student = null;
-        try (Connection connection = DBConnection.getConnection();
-             PreparedStatement ps = connection.prepareStatement(query)) {
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                student = new Student();
-                student.setId(rs.getInt("id"));
-                student.setFirstName(rs.getString("first_name"));
-                student.setLastName(rs.getString("last_name"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.get(Student.class, id);
         }
-        return student;
+    }
+
+    public void updateStudent(Student student) {
+        Transaction tx = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            tx = session.beginTransaction();
+            session.update(student);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     public void deleteStudent(int id) {
-        String query = "DELETE FROM student WHERE id = ?";
-        try (Connection connection = DBConnection.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setInt(1, id);
-            ps.executeUpdate();
-        } catch (SQLException e) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Student student = session.get(Student.class, id);
+            if (student != null) {
+                session.delete(student);
+                transaction.commit();
+            }
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void updateStudent(int id, String first_name, String last_name) {
-        String query = "UPDATE student SET first_name = ?, last_name = ? WHERE id = ?";
-        try (Connection connection = DBConnection.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setString(1, first_name);
-            ps.setString(2, last_name);
-            ps.setInt(3, id);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
         }
     }
 }
